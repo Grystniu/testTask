@@ -1,9 +1,7 @@
 {% extends "app/index.html" %}
+{% comment %} {% extends "app/index.html" %}
 {% block content %}
 {% load custom_tags %}
-<ul>
-    {% draw_menu 'first menu' menu_item %}
-</ul> 
 {% if menus %}
     <ul>
         {% for menu in menus %}
@@ -13,6 +11,17 @@
 {% elif menu_name %}
     <h3><a href={% url 'main_menu' %}>В главное меню</h3>
     {% draw_menu menu_name menu_item %}
+{% endif %}
+
+{% endblock %} {% endcomment %}
+
+{% block content %}
+{% load custom %}
+{% if "first menu" %}
+    <ul>
+        <h3><a href={% url 'main_menu' %}>В главное меню</h3>
+            {% draw_menu menu_name menu_item %}
+    </ul>    
 {% endif %}
 
 {% endblock %}
